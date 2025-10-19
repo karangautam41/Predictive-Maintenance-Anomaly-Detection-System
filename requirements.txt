@@ -1,0 +1,8 @@
+tensorflow
+keras-tuner
+scikit-learn
+joblib
+plotly
+pandas
+numpy
+streamlit
