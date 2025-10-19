@@ -1,6 +1,4 @@
-# =============================================================================
 # 1. IMPORTS
-# =============================================================================
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -13,9 +11,7 @@ import keras_tuner as kt
 import os
 import plotly.graph_objects as go
 
-# =============================================================================
 # 2. CONFIGURATION
-# =============================================================================
 st.set_page_config(page_title="Predictive Maintenance AI", layout="wide")
 
 # Constants for data generation and model
@@ -25,10 +21,7 @@ MODEL_PATH = 'final_model.h5'
 SCALER_PATH = 'scaler.pkl'
 THRESHOLD_PATH = 'threshold.pkl'
 
-# =============================================================================
 # 3. MACHINE LEARNING HELPER FUNCTIONS (The Backend Logic)
-# =============================================================================
-
 def simulate_multivariate_data():
     """Simulates a multivariate time series for N_FEATURES sensors."""
     np.random.seed(42)
@@ -161,9 +154,7 @@ def plot_interactive_results(results_df):
         charts.append(fig)
     return charts
 
-# =============================================================================
 # 4. STREAMLIT UI (The Frontend)
-# =============================================================================
 st.sidebar.title("Navigation")
 app_mode = st.sidebar.selectbox("Choose the mode", ["🔎 Prediction Mode", "🚀 Training Mode"])
 
@@ -186,7 +177,7 @@ if app_mode == "🚀 Training Mode":
             loss_df = pd.DataFrame(history.history)
             st.line_chart(loss_df[['loss', 'val_loss']])
 
-# --- Prediction Mode ---
+# Prediction Mode
 elif app_mode == "🔎 Prediction Mode":
     st.title("🔎 Anomaly Detection for Predictive Maintenance")
     st.markdown("Upload your multivariate sensor data as a CSV file. The AI will analyze it to detect potential machine failures.")
